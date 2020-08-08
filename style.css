@@ -1,0 +1,13 @@
+.container { 
+    background-color: lightpink; 
+    width: 100vw; 
+    height: 100vw; 
+    
+} 
+
+.questionoptions { 
+    display: block; 
+    width: 30vw; 
+    margin: 0 auto;
+
+}
