@@ -5,8 +5,7 @@
     height: 100vw; 
     border-radius: 5px;
     padding: 10px;
-    box-shadow: 0 0 10px; 
-
+    box-shadow: 0 0 10px;  
     
 }  
 
@@ -16,4 +15,17 @@
     justify-content: center;
     align-items: center;  
     
+}  
+
+#timer-container { 
+    position: fixed; 
+    top: 10px; 
+    right: 135px; 
+    background-color:red;
+    color: mintcream;
+
 } 
+
+#question-text { 
+    background-color: seashell;
+}

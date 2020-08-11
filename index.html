@@ -15,27 +15,28 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <h1>Cat quiz</h1> 
-                <div id="start-prompt"> 
+                <h1>Cat quiz</h1>
+                <div id="start-prompt" style="visibility: visible;">
+                    <h5>Take this quiz to find out if you are a true cat lover!</h5>
                     <button id="start-quiz" class="btn btn-primary">Start Quiz
-                    </button> 
+                    </button>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col text-center">
-                <div id="question-prompt" class="hide">
-                    <h2 id="question">Question?</h2>
+                <div id="question-prompt" style="visibility: hidden;">
+                    <h2 id="question-text">Question?</h2>
                     <div id="question-options" class="btn-grid">
-                        <button class="btn btn-danger btn-sm">Answer 1</button>
-                        <button class="btn btn-danger btn-sm">Answer 2</button>
-                        <button class="btn btn-danger btn-sm">Answer 3</button>
-                        <button class="btn btn-danger btn-sm">Answer 4</button>
+            
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div id="timer-container" style="visibility: hidden;">
+        <h4>Time Left: <span id="time"></span></h4>
     </div>
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -1,54 +1,18 @@
-//create variables 
+// HTML variables 
 var startQuizBtn = document.getElementById('start-quiz')
-var questionElement = document.getElementById('question')
+var questionText = document.getElementById('question-text')
 var startPrompt = document.getElementById('start-prompt')
 var questionPrompt = document.getElementById('question-prompt')
 var questionOptions = document.getElementById('question-options')
-var questionIndex = 0
+var timerContainer = document.getElementById('timer-container')
+var timeSpan = document.getElementById('time')
 var score = 0
 
-
-// When start quiz button is clicked,
-startQuizBtn.addEventListener('click', function (e) {
-    // Hide start prompt
-    startPrompt.style.display = "none";
-
-    // Show question prompt   
-    questionPrompt.style.display = "block";
-
-    // populate questions prompt with first question 
-    renderQuestion();
-
-})
-
-
-
-
-//Functions 
-function startQuiz() {
-    console.log('Started')
-    startQuizBtn.classList.add('hide')
-    questionPrompt.classList.remove('hide')
-    setNextQuestion()
-
-}
-
-function setNextQuestion() {
-    showQuestion[questionIndex]
-}
-
-function showQuestion(question) {
-    questionElement.innerText = question.question
-}
-
-function selectAnswer() {
-
-}
-
-
-
-
-
+// Data variables
+var questionIndex = 0
+var answerIndex = 0
+var time = 60
+var timer;
 
 // List of question, options, and correct answer 
 var questions = [
@@ -80,28 +44,81 @@ var questions = [
 ];
 
 
+
+// When start quiz button is clicked,
+startQuizBtn.addEventListener('click', function () {
+    console.log('started')
+    // Hide start prompt  
+    startPrompt.style.visibility = "hidden";
+    // Show question prompt
+    questionPrompt.style.visibility = "visible";
+    // populate questions prompt with first question  
+    renderQuestion();
+    // start timer 
+    startTimer();
+
+})
+
+// check if user answer is correct or incorrect
+
+
+
+// When one of the question options is clicked
+
+//Functions 
+
 function renderQuestion() {
+    // Get reference to object 
     var question = questions[questionIndex];
+    // Display question 
     questionText.textContent = question.text;
-    questionOptions.innerHTML= "";
+
+    // Empty out #question-options div 
+    questionOptions.innerHTML = "";
 
     // We want to loop through all questions of the array
-    for (var i = 0; i < questions.length; i++) {
-        var btn = document.createElement("button"); 
-        btn.setAttribute("class", "btn btn-danger btn-sm"); 
+    for (var i = 0; i < question.options.length; i++) {
+        var btn = document.createElement("button");
+        btn.setAttribute("class", "btn btn-danger btn-sm question-options");
         btn.setAttribute("value", question.options[i]);
         btn.textContent = question.options[i];
         questionOptions.append(btn);
-    }
-} 
 
-document.body.addEventListener('click', function (e) { 
-    if (!e.target.matches(".question-option")) return; 
-    var value = e.target.value; 
-    if (questions[questionIndex].answer === value) { 
+    }
+}
+
+function startTimer() {
+    timerContainer.style.visibility = "visible";
+    timeSpan.textContent = time;
+    timer = setInterval(function () {
+        time--;
+        timeSpan.textContent = time;
+        if (time === 0) {
+            endGame();
+        }
+    }, 1000);
+}
+
+function endGame() {
+    alert("Game Over");
+    clearInterval(timer);
+    // Give score = leftover time  
+    score === time
+    alert("your score")
+    // Refresh page
+}
+
+
+document.body.addEventListener('click', function (e) {
+    if (!e.target.matches('question-options')) return;
+    var value = e.target.value;
+    if (questions[questionIndex].answer === value) {
         console.log("correct");
-    }else { 
-        console.log("wrong")
+    } else {
+        console.log("wrong");
+        time -= 10;
+        timeSpan.textContent = time;
     }
+    questionIndex++;
 
-});
+}); 
