@@ -1,4 +1,4 @@
-// HTML variables 
+// HTML variables  
 var startQuizBtn = document.getElementById('start-quiz')
 var questionText = document.getElementById('question-text')
 var startPrompt = document.getElementById('start-prompt')
@@ -10,7 +10,6 @@ var score = 0
 
 // Data variables
 var questionIndex = 0
-var answerIndex = 0
 var time = 60
 var timer;
 
@@ -59,12 +58,6 @@ startQuizBtn.addEventListener('click', function () {
 
 })
 
-// check if user answer is correct or incorrect
-
-
-
-// When one of the question options is clicked
-
 //Functions 
 
 function renderQuestion() {
@@ -72,7 +65,6 @@ function renderQuestion() {
     var question = questions[questionIndex];
     // Display question 
     questionText.textContent = question.text;
-
     // Empty out #question-options div 
     questionOptions.innerHTML = "";
 
@@ -82,9 +74,11 @@ function renderQuestion() {
         btn.setAttribute("class", "btn btn-danger btn-sm question-options");
         btn.setAttribute("value", question.options[i]);
         btn.textContent = question.options[i];
-        questionOptions.append(btn);
+        questionOptions.append(btn)
 
     }
+
+
 }
 
 function startTimer() {
@@ -104,9 +98,19 @@ function endGame() {
     clearInterval(timer);
     // Give score = leftover time  
     score === time
-    alert("your score")
-    // Refresh page
+    // Hide timer container
+    timerContainer.style.visibility = "hidden";
+    // Alert user of their final score
+    alert("your score is " + time)
+    // Hide question and options 
+    questionPrompt.style.visibility = "hidden";
+    // Add cat image
 }
+
+// check if user answer is correct or incorrect  
+questionOptions.addEventListener('click', function() { 
+    console.log('options')
+})
 
 
 document.body.addEventListener('click', function (e) {
@@ -120,5 +124,6 @@ document.body.addEventListener('click', function (e) {
         timeSpan.textContent = time;
     }
     questionIndex++;
+    renderQuestion();
 
-}); 
+});
