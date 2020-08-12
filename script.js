@@ -1,11 +1,11 @@
 // HTML variables  
-var startQuizBtn = document.getElementById('start-quiz')
-var questionText = document.getElementById('question-text')
-var startPrompt = document.getElementById('start-prompt')
-var questionPrompt = document.getElementById('question-prompt')
-var questionOptions = document.getElementById('question-options')
-var timerContainer = document.getElementById('timer-container')
-var timeSpan = document.getElementById('time')
+var startQuizBtn = document.querySelector("#start-quiz");
+var questionText = document.querySelector("#question-text");
+var startPrompt = document.querySelector("#start-prompt");
+var questionPrompt = document.querySelector("#question-prompt");
+var questionOptions = document.querySelector("#question-options");
+var timerContainer = document.querySelector("#timer-container");
+var timeSpan = document.querySelector("#time");
 var score = 0
 
 // Data variables
@@ -18,34 +18,34 @@ var questions = [
     {
         text: "What is the average life span of a cat?",
         options: ["12-18 years", "9-15 years", "20-25 years", "8-14 years"],
-        answer: "12-18 years"
+        answer: "12-18 years",
     },
     {
         text: "On average how many hours do cats sleep in a day?",
-        options: ["8", "10", "15", "20"],
-        answer: "15"
+        options: ["8 hours", "10 hours", "15 hours", "20 hours"],
+        answer: "15 hours",
     },
     {
         text: "What is the normal body temperature of a cat?",
         options: ["98°F", "102°F", "94°F", "106°F"],
-        answer: "102°F"
+        answer: "102°F",
     },
     {
         text: "What is the proper term for a group of Kittens?",
-        options: ["kindle", "kettle", "kine", "kaboodle"],
-        answer: "kindle"
+        options: ["Kindle", "Kettle", "Kine", "Kaboodle"],
+        answer: "Kindle",
     },
     {
         text: "What is the largest breed of cat?",
         options: ["Savannah", "British Shorthair", "Ragdoll", "Maine Coon"],
-        answer: "Maine Coon"
+        answer: "Maine Coon",
     },
 ];
 
 
 
 // When start quiz button is clicked,
-startQuizBtn.addEventListener('click', function () {
+startQuizBtn.addEventListener("click", function () {
     console.log('started')
     // Hide start prompt  
     startPrompt.style.visibility = "hidden";
@@ -87,13 +87,13 @@ function startTimer() {
     timer = setInterval(function () {
         time--;
         timeSpan.textContent = time;
-        if (time === 0) {
+        if (time === 0)  {
             endGame();
         }
     }, 1000);
 }
 
-function endGame() {
+function endGame() { 
     alert("Game Over");
     clearInterval(timer);
     // Give score = leftover time  
@@ -104,17 +104,11 @@ function endGame() {
     alert("your score is " + time)
     // Hide question and options 
     questionPrompt.style.visibility = "hidden";
-    // Add cat image
 }
 
 // check if user answer is correct or incorrect  
-questionOptions.addEventListener('click', function() { 
-    console.log('options')
-})
-
-
-document.body.addEventListener('click', function (e) {
-    if (!e.target.matches('question-options')) return;
+document.body.addEventListener("click", function (e) {
+    if (!e.target.matches(".question-options")) return;
     var value = e.target.value;
     if (questions[questionIndex].answer === value) {
         console.log("correct");
@@ -123,7 +117,8 @@ document.body.addEventListener('click', function (e) {
         time -= 10;
         timeSpan.textContent = time;
     }
-    questionIndex++;
+    questionIndex++; 
     renderQuestion();
+    
 
 });
