@@ -87,14 +87,14 @@ function startTimer() {
     timer = setInterval(function () {
         time--;
         timeSpan.textContent = time;
-        if (time === 0)  {
-            endGame();
+        if (time === 0 || questionIndex > 4)  {
+            endGame(); 
         }
     }, 1000);
 }
 
 function endGame() { 
-    alert("Game Over");
+    alert("Quiz over!");
     clearInterval(timer);
     // Give score = leftover time  
     score === time
@@ -104,6 +104,7 @@ function endGame() {
     alert("your score is " + time)
     // Hide question and options 
     questionPrompt.style.visibility = "hidden";
+   
 }
 
 // check if user answer is correct or incorrect  
