@@ -7,4 +7,4 @@ Instructions:
 . Good luck cat lovers! 
 
 DEPLOYED URL: https://rachelsakles.github.io/coding-quiz/
-![catquiz](images/Screen Shot 2020-08-25 at 4.19.20 PM.png)
+![catquiz](images/catquiz.png)
